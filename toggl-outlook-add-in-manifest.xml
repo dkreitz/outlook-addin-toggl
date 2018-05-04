@@ -17,14 +17,16 @@
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="Toggl Outlook Add-in" />
-  <Description DefaultValue="Allows users to access their Toggl to track time against Emails and Appointments"/>
+  <Description DefaultValue="Allows users to access their Toggl account to track time against emails and calendar events"/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/hi-res-icon.png"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/toggl/icon-48.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/toggl/icon-128.png"/>
 
   <!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
-  <!-- <SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]" /> -->
+  <!-- 
+  <SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]" /> 
+  -->
 
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
@@ -72,17 +74,14 @@
 
           <!-- Message Read -->
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
-            <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
             <OfficeTab id="TabDefault">
-              <!-- Up to 6 Groups added per Tab -->
               <Group id="msgReadGroup">
                 <Label resid="groupLabel" />
-                <!-- Launch the add-in : task pane button -->
-                <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                  <Label resid="paneReadButtonLabel" />
+                <Control xsi:type="Button" id="msgReadStartTimer">
+                  <Label resid="startTimerLabel" />
                   <Supertip>
-                    <Title resid="paneReadSuperTipTitle" />
-                    <Description resid="paneReadSuperTipDescription" />
+                    <Title resid="startTimerTitle" />
+                    <Description resid="startTimerDesc" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16" />
@@ -90,7 +89,7 @@
                     <bt:Image size="80" resid="icon80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="messageReadTaskPaneUrl" />
+                    <SourceLocation resid="startTimerPaneUrl"/>
                   </Action>
                 </Control>
                 <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
@@ -98,15 +97,17 @@
             </OfficeTab>
           </ExtensionPoint>
           <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+
+          <!-- Message Compose -->
           <ExtensionPoint xsi:type="MessageComposeCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgComposeCmdGroup">
                 <Label resid="groupLabel"/>
-                <Control xsi:type="Button" id="msgComposeInsertGist">
-                  <Label resid="insertGistLabel"/>
+                <Control xsi:type="Button" id="msgComposeStartTimer">
+                  <Label resid="startTimerLabel"/>
                   <Supertip>
-                    <Title resid="insertGistTitle"/>
-                    <Description resid="insertGistDesc"/>
+                    <Title resid="startTimerTitle"/>
+                    <Description resid="startTimerDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -114,9 +115,10 @@
                     <bt:Image size="80" resid="icon80"/>
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="insertGistPaneUrl" />
+                    <SourceLocation resid="startTimerPaneUrl"/>
                   </Action>
                 </Control>
+                <!-- 
                 <Control xsi:type="Button" id="msgComposeInsertDefaultGist">
                   <Label resid="insertDefaultGistLabel"/>
                   <Supertip>
@@ -132,50 +134,98 @@
                     <FunctionName>insertDefaultGist</FunctionName>
                   </Action>
                 </Control>
+                -->
               </Group>
             </OfficeTab>
           </ExtensionPoint>
+
+          <!-- Appointment Organizer -->
+          <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="aptOrganizerCmdGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="aptOrganizerStartTimer">
+                  <Label resid="startTimerLabel"/>
+                  <Supertip>
+                    <Title resid="startTimerTitle"/>
+                    <Description resid="startTimerDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="startTimerPaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+
+          <!-- Appointment Attendee -->
+          <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="aptAttendeeCmdGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="aptAttendeeStartTimer">
+                  <Label resid="startTimerLabel"/>
+                  <Supertip>
+                    <Title resid="startTimerTitle"/>
+                    <Description resid="startTimerDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="startTimerPaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+
+
         </DesktopFormFactor>
       </Host>
     </Hosts>
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="icon32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="icon80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        <bt:Image id="icon16" DefaultValue="https://localhost:3000/assets/toggl/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://localhost:3000/assets/toggl/icon-48.png"/>
+        <bt:Image id="icon80" DefaultValue="https://localhost:3000/assets/toggl/icon-128.png"/>
+        <!-- 
+        <bt:Image id="active19" DefaultValue="https://localhost:3000/assets/toggl/active-19.png">
+        <bt:Image id="active38" DefaultValue="https://localhost:3000/assets/toggl/active-38.png">
+        <bt:Image id="inactive19" DefaultValue="https://localhost:3000/assets/toggl/inactive-19.png">
+        <bt:Image id="inactive38" DefaultValue="https://localhost:3000/assets/toggl/inactive-38.png">
+        <bt:Image id="icon16" DefaultValue="https://localhost:3000/assets/toggl/icon-16.png">
+        <bt:Image id="icon19" DefaultValue="https://localhost:3000/assets/toggl/icon-19.png">
+        <bt:Image id="icon48" DefaultValue="https://localhost:3000/assets/toggl/icon-48.png">
+        <bt:Image id="icon128" DefaultValue="https://localhost:3000/assets/toggl/icon-128.png">
+        -->
       </bt:Images>
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html"/>
-        <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
-        <bt:Url id="insertGistPaneUrl" DefaultValue="https://localhost:3000/msg-compose/insert-gist.html"/>
+        <bt:Url id="startTimerPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="Git the Gist"/>
-        <bt:String id="customTabLabel"  DefaultValue="My Add-in Tab"/>
-        <bt:String id="paneReadButtonLabel" DefaultValue="Display all properties"/>
-        <bt:String id="paneReadSuperTipTitle" DefaultValue="Get all properties"/>
-        <bt:String id="insertGistLabel" DefaultValue="Insert Gist"> 
-          <bt:Override Locale="es-ES" Value="Inserte el Gist"/> 
-        </bt:String> 
-        <bt:String id="insertGistTitle" DefaultValue="Insert Gist"> 
-          <bt:Override Locale="es-ES" Value="Inserte el Gist"/> 
-        </bt:String> 
-        <bt:String id="insertDefaultGistLabel" DefaultValue="Insert Default Gist"> 
-          <bt:Override Locale="es-ES" Value="Inserte el Gist predeterminado"/> 
-        </bt:String> 
-        <bt:String id="insertDefaultGistTitle" DefaultValue="Insert Default Gist"> 
-          <bt:Override Locale="es-ES" Value="Inserte el Gist predeterminado"/> 
-        </bt:String>
+        <bt:String id="groupLabel" DefaultValue="Toggl"/>
+        <bt:String id="startTimerLabel" DefaultValue="Start Timer"/> 
+        <bt:String id="startTimerTitle" DefaultValue="Start Timer"/>
+        <!-- 
+        <bt:String id="insertDefaultGistLabel" DefaultValue="Insert Default Gist"/> 
+        <bt:String id="insertDefaultGistTitle" DefaultValue="Insert Default Gist"/> 
+        --> 
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane displaying all available properties. This is an example of a button that opens a task pane."/>
-        <bt:String id="insertGistDesc" DefaultValue="Displays a list of your Gists and allows you to insert their contents into the current message"> 
-          <bt:Override Locale="es-ES" Value="Muestra una lista de sus Gists y permite insertar su contenido en el mensaje actual"/> 
-        </bt:String> 
-        <bt:String id="insertDefaultGistDesc" DefaultValue="Inserts the contents of the Gist you mark as default into the current message"> 
-          <bt:Override Locale="es-ES" Value="Inserta el contenido de lo Gist que marca como predeterminado en el mensaje actual"/> 
-        </bt:String>
+        <bt:String id="startTimerDesc" DefaultValue="Starts the Toggle timer on a new task."/> 
+        <!-- 
+        <bt:String id="insertDefaultGistDesc" DefaultValue="Inserts the contents of the Gist you mark as default into the current message"/> 
+        -->
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
