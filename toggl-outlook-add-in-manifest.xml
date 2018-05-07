@@ -17,7 +17,7 @@
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="Toggl Outlook Add-in" />
-  <Description DefaultValue="Allows users to access their Toggl account to track time against emails and calendar events"/>
+  <Description DefaultValue="Allows users to access their Toggl account to track time against emails and calendar events."/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://localhost:3000/assets/toggl/icon-48.png" />
