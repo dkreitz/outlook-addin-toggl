@@ -210,7 +210,7 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html"/>
-        <bt:Url id="startTimerPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
+        <bt:Url id="startTimerPaneUrl" DefaultValue="https://localhost:3000/task-pane/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Toggl"/>
