@@ -78,10 +78,10 @@
               <Group id="msgReadGroup">
                 <Label resid="groupLabel" />
                 <Control xsi:type="Button" id="msgReadStartTimer">
-                  <Label resid="startTimerLabel" />
+                  <Label resid="openTimerLabel" />
                   <Supertip>
-                    <Title resid="startTimerTitle" />
-                    <Description resid="startTimerDesc" />
+                    <Title resid="openTimerTitle" />
+                    <Description resid="openTimerDesc" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16" />
@@ -104,10 +104,10 @@
               <Group id="msgComposeCmdGroup">
                 <Label resid="groupLabel"/>
                 <Control xsi:type="Button" id="msgComposeStartTimer">
-                  <Label resid="startTimerLabel"/>
+                  <Label resid="openTimerLabel"/>
                   <Supertip>
-                    <Title resid="startTimerTitle"/>
-                    <Description resid="startTimerDesc"/>
+                    <Title resid="openTimerTitle"/>
+                    <Description resid="openTimerDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -145,10 +145,10 @@
               <Group id="aptOrganizerCmdGroup">
                 <Label resid="groupLabel"/>
                 <Control xsi:type="Button" id="aptOrganizerStartTimer">
-                  <Label resid="startTimerLabel"/>
+                  <Label resid="openTimerLabel"/>
                   <Supertip>
-                    <Title resid="startTimerTitle"/>
-                    <Description resid="startTimerDesc"/>
+                    <Title resid="openTimerTitle"/>
+                    <Description resid="openTimerDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -169,10 +169,10 @@
               <Group id="aptAttendeeCmdGroup">
                 <Label resid="groupLabel"/>
                 <Control xsi:type="Button" id="aptAttendeeStartTimer">
-                  <Label resid="startTimerLabel"/>
+                  <Label resid="openTimerLabel"/>
                   <Supertip>
-                    <Title resid="startTimerTitle"/>
-                    <Description resid="startTimerDesc"/>
+                    <Title resid="openTimerTitle"/>
+                    <Description resid="openTimerDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -214,15 +214,15 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Toggl"/>
-        <bt:String id="startTimerLabel" DefaultValue="Start Timer"/> 
-        <bt:String id="startTimerTitle" DefaultValue="Start Timer"/>
+        <bt:String id="openTimerLabel" DefaultValue="Open Timer"/> 
+        <bt:String id="openTimerTitle" DefaultValue="Open Timer"/>
         <!-- 
         <bt:String id="insertDefaultGistLabel" DefaultValue="Insert Default Gist"/> 
         <bt:String id="insertDefaultGistTitle" DefaultValue="Insert Default Gist"/> 
         --> 
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="startTimerDesc" DefaultValue="Starts the Toggle timer on a new task."/> 
+        <bt:String id="openTimerDesc" DefaultValue="Opens the Toggle timer panel."/> 
         <!-- 
         <bt:String id="insertDefaultGistDesc" DefaultValue="Inserts the contents of the Gist you mark as default into the current message"/> 
         -->
